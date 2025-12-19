@@ -191,5 +191,4 @@ This project is licensed under the MIT License.
 Developed as part of the **Introduction to Python** course to apply Python programming concepts, data handling, and logical problem-solving to a real-world expense-splitting scenario.
 
 
-If you paste this into GitHub, it will look **properly documented, clean, and academic**.
-You’re completely done now.
+
