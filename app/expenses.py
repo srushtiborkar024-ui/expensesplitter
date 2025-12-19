@@ -161,24 +161,36 @@ def calculate_who_owes_whom(expenses: List[dict]) -> List[SettlementRecord]:
         elif balance > 0.01:
             creditors.append((person, balance))
     
-    # Match debtors with creditors
-    for debtor_name, debtor_amount in debtors:
-        for i, (creditor_name, creditor_amount) in enumerate(creditors):
-            # Settle minimum of what debtor owes and creditor is owed
-            settle_amount = min(debtor_amount, creditor_amount)
-            
-            if settle_amount > 0.01:
-                settlements.append(
-                    SettlementRecord(
-                        debtor=debtor_name,
-                        creditor=creditor_name,
-                        amount=round(settle_amount, 2)
-                    )
-                )
-                
-                # Update remaining amounts
-                debtor_amount -= settle_amount
-                creditors[i] = (creditor_name, creditor_amount - settle_amount)
+    # Correct greedy settlement algorithm
+i = j = 0
+
+while i < len(debtors) and j < len(creditors):
+    debtor_name, debtor_amount = debtors[i]
+    creditor_name, creditor_amount = creditors[j]
+
+    settle_amount = min(debtor_amount, creditor_amount)
+
+    settlements.append(
+        SettlementRecord(
+            debtor=debtor_name,
+            creditor=creditor_name,
+            amount=round(settle_amount, 2)
+        )
+    )
+
+    debtor_amount -= settle_amount
+    creditor_amount -= settle_amount
+
+    if debtor_amount <= 0.01:
+        i += 1
+    else:
+        debtors[i] = (debtor_name, debtor_amount)
+
+    if creditor_amount <= 0.01:
+        j += 1
+    else:
+        creditors[j] = (creditor_name, creditor_amount)
+
     
     return settlements
 
