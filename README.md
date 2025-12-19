@@ -452,6 +452,3 @@ python -m uvicorn app.main:app --reload
 ✨ Simple • Elegant • Functional ✨
 
 </div>
-#   e x p e n s e s p l i t t e r  
- #   e x p e n s e s p l i t t e r  
- 
