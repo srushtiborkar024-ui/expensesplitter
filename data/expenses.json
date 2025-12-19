@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "description": "Dinner at Indian restaurant",
+    "amount": 120.0,
+    "paid_by": "Srushti",
+    "split_between": "Srushti, Athul, Sahiti",
+    "category": "Food",
+    "created_at": "2025-12-17T05:14:59.110079"
+  }
+]
